@@ -4,7 +4,8 @@ import cors from "cors";
 import connectDB from "./mongodb/connect.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
-import path from "path";
+const PORT = process.env.PORT || 5000;
+// import path from "path";
 // import { fileURLToPath } from "url";
 
 dotenv.config();
@@ -35,8 +36,8 @@ app.get("/", async (req, res) => {
 const startServer = async () => {
   try {
     connectDB(process.env.MONGODB_URL);
-    app.listen(5000, () => {
-      console.log("Server has started on port http://localhost:5000");
+    app.listen(PORT, () => {
+      console.log(`Server has started on port ${PORT}`);
     });
   } catch (error) {
     console.log(error);
